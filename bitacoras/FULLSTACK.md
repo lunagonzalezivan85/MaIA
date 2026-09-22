@@ -144,3 +144,13 @@
 - Verificaciones: GET / → 200; `public.css` y `landing.css` → 200; markup sin `<style>` ni `style=`; `php -l` limpio.
 - Siguiente paso: futuras vistas deben seguir la regla; cuando haya JS irá a `public/assets/js/`.
 
+## FULLSTACK-20260921-010
+- Fecha: 2026-09-21 18:55 -06:00; zona de referencia America/Managua.
+- Autor o rol ejecutor: Fullstack (asistente Devin).
+- Tarea: publicar el trabajo en el repositorio remoto.
+- Estado: terminada.
+- Trabajo realizado: `git init` (rama main), remoto `origin` → github.com/lunagonzalezivan85/MaIA.git, commit inicial con documentación + plataforma completa (164 archivos), push a `main`. `.env` y `vendor/` excluidos por `platform/.gitignore`.
+- Decisiones y supuestos: commit con identidad puntual por comando (`git -c user.name/email`) sin modificar la config git del usuario; las reglas de desarrollo quedan documentadas en `AGENTS.md` §Reglas compartidas → Reglas de desarrollo (PHP+HTML en .php; CSS en `public/assets/css/`; JS en `public/assets/js/`; sin inline ni espagueti).
+- Verificaciones: `git push -u origin main` → `[new branch] main -> main`, tracking configurado.
+- Siguiente paso: autenticación real (T-010) en nueva rama o commit directo según convenga al equipo.
+

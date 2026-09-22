@@ -15,34 +15,40 @@ Versión 0.5 · 2026-09-21. Orden propuesto; no constituye estimación de fechas
 
 ## Backlog inicial
 
-| Tarea | Responsable | Resultado verificable |
-|---|---|---|
-| T-001 | Proyecto | Resolver alcance del primer caso y decisiones abiertas |
-| T-002 | Fullstack | Crear base técnica y controles de empresa/roles |
-| T-003 | QA | Preparar matriz de aislamiento y permisos con datos sintéticos |
-| T-004 | Fullstack | Implementar conectores e ingesta idempotente |
-| T-005 | QA | Verificar errores de datos, SSRF y deduplicación |
-| T-006 | Fullstack | Implementar editor, versionado y simulación |
-| T-007 | Fullstack | Implementar workers, cuotas y canales seleccionados |
-| T-008 | QA | Validar callbacks, fallos, concurrencia y recuperación |
-| T-009 | Proyecto | Consolidar evidencia, alcance y decisión de piloto |
-| T-010 | Fullstack | Registro, verificación, recuperación y creación idempotente del espacio en E1 |
-| T-011 | Fullstack | Catálogo Cobro/Promoción, constructor privado y copias versionadas; definir esquema antes de cerrar E2 |
-| T-012 | Fullstack | Importación con staging, mapeo, vista previa, confirmación y reimportación segura en E2 |
-| T-013 | Fullstack | Asistente ramificado Importación/API y cambio de modalidad en borrador en E3 |
-| T-014 | QA | Verificar RF-17 a RF-22 con AT-14 a AT-18 antes del piloto |
-| T-015 | Fullstack | Crear tokens y componentes One UI + Bento Grid en E1; aplicarlos a todas las pantallas conforme UX-01 a UX-06 |
-| T-016 | QA | Verificar consistencia visual, responsive, contraste, estados y teclado con AT-19 antes del piloto |
+Seguimiento con checklist: `[x]` solo con evidencia de aceptación; el trabajo parcial se anota debajo del ítem. Referencias de sesión en `bitacoras/FULLSTACK.md`.
 
-Todos estos elementos empiezan en estado **pendiente**. La documentación creada no implica implementación ni pruebas ejecutadas.
+- [ ] **T-001** — Proyecto · Resolver alcance del primer caso y decisiones abiertas
+- [ ] **T-002** — Fullstack · Crear base técnica y controles de empresa/roles
+  - *En curso (2026-09-21):* entorno PHP 8.2 + CI 4.7.4 + Composer en `platform/`; esquema completo (34 tablas, 10 migraciones); i18n es/en con `tenants.locale`; menús admin/tenant/público con filtros auth/guest/role; layouts público y privado separados; landing pública. **Pendiente:** modelos, autenticación real y autorización por rol en backend.
+- [ ] **T-003** — QA · Preparar matriz de aislamiento y permisos con datos sintéticos
+- [ ] **T-004** — Fullstack · Implementar conectores e ingesta idempotente
+  - *Base creada:* tablas `connectors`, `connector_versions`, `data_sources`, `ingestion_batches`, `source_records` con restricciones únicas del TRN.
+- [ ] **T-005** — QA · Verificar errores de datos, SSRF y deduplicación
+- [ ] **T-006** — Fullstack · Implementar editor, versionado y simulación
+  - *Base creada:* tablas `agents`, `agent_versions`, `action_plans`, `action_plan_versions` con campos de borrador (draft_revision, input_mode, avatar).
+- [ ] **T-007** — Fullstack · Implementar workers, cuotas y canales seleccionados
+  - *Base creada:* tablas `executions`, `actions`, `action_attempts`, `provider_events`, `outbox_events`, `usage_ledger`.
+- [ ] **T-008** — QA · Validar callbacks, fallos, concurrencia y recuperación
+- [ ] **T-009** — Proyecto · Consolidar evidencia, alcance y decisión de piloto
+- [ ] **T-010** — Fullstack · Registro, verificación, recuperación y creación idempotente del espacio en E1
+  - *Base creada:* tablas `users`, `memberships`, `auth_tokens`; vistas públicas login/registro/recuperación; POST stubs con aviso (sin verificación real).
+- [ ] **T-011** — Fullstack · Catálogo Cobro/Promoción, constructor privado y copias versionadas; definir esquema antes de cerrar E2
+  - *Base creada:* tablas `templates`, `template_versions`; seeder con plantillas de sistema Cobro y Promoción (campos propuestos, DEC-09 pendiente).
+- [ ] **T-012** — Fullstack · Importación con staging, mapeo, vista previa, confirmación y reimportación segura en E2
+  - *Base creada:* tabla `import_jobs` con estados, revisión y expiración.
+- [ ] **T-013** — Fullstack · Asistente ramificado Importación/API y cambio de modalidad en borrador en E3
+- [ ] **T-014** — QA · Verificar RF-17 a RF-22 con AT-14 a AT-18 antes del piloto
+- [ ] **T-015** — Fullstack · Crear tokens y componentes One UI + Bento Grid en E1; aplicarlos a todas las pantallas conforme UX-01 a UX-06
+  - *Base creada:* variables CSS (superficies, neutros, acento azul) y componentes provisionales (topbar, sidebar, tarjetas bento) en `public/assets/css/`; tokens formales pendientes.
+- [ ] **T-016** — QA · Verificar consistencia visual, responsive, contraste, estados y teclado con AT-19 antes del piloto
 
 Incremento E3 — configuración acompañada (v0.4):
 
-| Tarea | Responsable | Resultado verificable |
-|---|---|---|
-| T-017 | Fullstack | Progreso calculado, autoguardado con revisiones, checklist y reanudación conforme RF-23/RF-24 |
-| T-018 | Fullstack | Catálogo de avatares y motion del asistente conforme RF-25/RF-26 y UX-07 a UX-09 |
-| T-019 | QA | Ejecutar AT-20 a AT-22 en ambas modalidades, con fallos de red, concurrencia y movimiento reducido |
+- [ ] **T-017** — Fullstack · Progreso calculado, autoguardado con revisiones, checklist y reanudación conforme RF-23/RF-24
+  - *Base creada:* campos `draft_revision`, `last_visited_step`, `configuration_schema_version` y `progress_snapshot` en `agents`/`agent_versions`.
+- [ ] **T-018** — Fullstack · Catálogo de avatares y motion del asistente conforme RF-25/RF-26 y UX-07 a UX-09
+  - *Base creada:* tabla `agent_avatars` + seeder con 6 avatares; `avatar_id` en `agents`/`agent_versions`.
+- [ ] **T-019** — QA · Ejecutar AT-20 a AT-22 en ambas modalidades, con fallos de red, concurrencia y movimiento reducido
 
 Trazabilidad: RF-23 → AT-20; RF-24 → AT-21; RF-25/RF-26 y UX-07 a UX-09 → AT-22. Definiciones y aceptación en [Configuración del agente](CONFIGURACION-AGENTE.md). Las tres tareas están pendientes; verificar antes del piloto.
 
@@ -50,13 +56,15 @@ Trazabilidad: RF-23 → AT-20; RF-24 → AT-21; RF-25/RF-26 y UX-07 a UX-09 → 
 
 Incremento v0.5 pendiente de implementación:
 
-| Tarea | Responsable | Entregable y aceptación |
-|---|---|---|
-| T-020 | Fullstack | Snapshots JSON privados, URL en BD y perfil de datos en E2; RF-27/RF-28, AT-23 |
-| T-021 | Fullstack | Análisis visible, intención posterior y recomendaciones confirmables en E3; RF-28/RF-29, AT-24 |
-| T-022 | Fullstack | Planes, ciclos y batches programables en E4; RF-30, AT-25 |
-| T-023 | Fullstack | Informe versionado y entrega independiente al endpoint de empresa en E4; RF-31/RF-32, AT-26/AT-27 |
-| T-024 | QA | Verificar AT-23 a AT-27, fallos parciales, recuperación y cero repetición de acciones al reenviar informes |
+- [ ] **T-020** — Fullstack · Snapshots JSON privados, URL en BD y perfil de datos en E2; RF-27/RF-28, AT-23
+  - *Base creada:* tabla `api_snapshots` (archivo, checksum, completitud, error) y `connector_versions` con URL versionada.
+- [ ] **T-021** — Fullstack · Análisis visible, intención posterior y recomendaciones confirmables en E3; RF-28/RF-29, AT-24
+  - *Base creada:* tablas `analysis_results` + `analysis_result_snapshots` (linaje N:M).
+- [ ] **T-022** — Fullstack · Planes, ciclos y batches programables en E4; RF-30, AT-25
+  - *Base creada:* tablas `cycle_runs`, `action_batches`, `schedules` (target_type cycle|batch).
+- [ ] **T-023** — Fullstack · Informe versionado y entrega independiente al endpoint de empresa en E4; RF-31/RF-32, AT-26/AT-27
+  - *Base creada:* tablas `run_reports`, `report_deliveries`, `result_endpoint_versions`.
+- [ ] **T-024** — QA · Verificar AT-23 a AT-27, fallos parciales, recuperación y cero repetición de acciones al reenviar informes
 
 Detalles y criterios en [Ciclo API](CICLO-API.md). E5 requiere además demo del ciclo completo y retorno, archivos consultables y flujo de recomendaciones confirmado; revisar estimación por este aumento de alcance.
 
