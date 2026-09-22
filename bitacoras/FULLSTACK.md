@@ -154,3 +154,12 @@
 - Verificaciones: `git push -u origin main` → `[new branch] main -> main`, tracking configurado.
 - Siguiente paso: autenticación real (T-010) en nueva rama o commit directo según convenga al equipo.
 
+## FULLSTACK-20260921-011
+- Fecha: 2026-09-21 19:00 -06:00; zona de referencia America/Managua.
+- Autor o rol ejecutor: Fullstack (asistente Devin).
+- Tarea: convertir el plan de entrega en checklist de seguimiento.
+- Estado: terminada.
+- Trabajo realizado: `docs/PLAN-ENTREGA.md` — backlog T-001..T-016 e incrementos T-017..T-024 convertidos a `- [ ]` con anotaciones de "base creada"/"en curso" donde el esquema o componentes ya existen; T-002 marcado en curso con pendientes explícitos. Regla documentada: `[x]` solo con evidencia de aceptación.
+- Verificaciones: estructura del documento revisada; commit e3d4518 empujado a origin/main.
+- Siguiente paso: marcar `[x]` solo cuando QA acredite aceptación de cada tarea.
+
