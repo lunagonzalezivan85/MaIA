@@ -1,0 +1,79 @@
+/* Layout privado (admin/tenant) — base One UI + Bento Grid */
+
+:root {
+    --surface: #ffffff;
+    --surface-alt: #f5f6f7;
+    --text: #1b1d1f;
+    --text-muted: #5b6066;
+    --accent: #1a63e8;
+    --border: #e3e5e8;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--surface-alt);
+    color: var(--text);
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: 56px 1fr;
+    grid-template-areas: "sidebar topbar" "sidebar main";
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 1rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar .brand {
+    font-weight: 700; font-size: 1.15rem; color: var(--text);
+    text-decoration: none; padding: 0.25rem 0.75rem 1rem;
+}
+.sidebar nav { display: flex; flex-direction: column; gap: 0.15rem; flex: 1; }
+.sidebar nav a {
+    color: var(--text); text-decoration: none;
+    padding: 0.55rem 0.75rem; border-radius: 10px; font-size: 0.95rem;
+}
+.sidebar nav a:hover, .sidebar nav a:focus { background: var(--surface-alt); }
+.sidebar nav a.active { background: #e8f0fe; color: var(--accent); font-weight: 600; }
+.sidebar .logout {
+    color: var(--text-muted); text-decoration: none;
+    padding: 0.55rem 0.75rem; font-size: 0.9rem;
+}
+
+.topbar {
+    grid-area: topbar;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 1.5rem;
+}
+.topbar .tenant { font-size: 0.9rem; color: var(--text-muted); }
+
+main { grid-area: main; padding: 1.5rem; }
+
+.page-title { font-size: 1.4rem; margin-bottom: 1.25rem; }
+
+.grid {
+    display: grid; gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+.bento {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.25rem;
+}
+.bento h2 { font-size: 1rem; margin-bottom: 0.5rem; }
+.bento p { color: var(--text-muted); font-size: 0.9rem; }
+
+@media (max-width: 768px) {
+    body { grid-template-columns: 1fr; grid-template-rows: auto auto 1fr;
+           grid-template-areas: "topbar" "sidebar" "main"; }
+    .sidebar { border-right: 0; border-bottom: 1px solid var(--border); }
+    .sidebar nav { flex-direction: row; flex-wrap: wrap; }
+}
